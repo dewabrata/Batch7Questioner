@@ -7,15 +7,16 @@ export const data = JSON.parse(`[{
 	"b": "hanif",
 	"c": "nobita",
 	"d": "naruto",
-	"jawab": "a"
+	"kunci": "a"
 }, {
 	"type": "checkbox",
 	"soal": "pilihlah 3 yang benar mengenai aqil",
 	"option": ["Trainer Juara Coding", "Manusia", "Anggota Avenger"],
-	"jawab": ["Manusia", "Anggota Avenger"]
+	"kunci": ["Manusia", "Anggota Avenger"]
 }, {
 	"type": "essay",
-	"soal": "Ceritakan pengalaman anda ketika sedang tidur"
+	"soal": "Ceritakan pengalaman anda ketika sedang tidur",
+	"kunci": 20
 },{
 	"type": "radio",
 	"soal": "Siapakah anggota BlackPink",
@@ -23,5 +24,5 @@ export const data = JSON.parse(`[{
 	"b": "rose",
 	"c": "jenny",
 	"d": "jisoo",
-	"jawab": "a"
+	"kunci": "a"
 }]`);
