@@ -25,4 +25,9 @@ export const data = JSON.parse(`[{
 	"c": "jenny",
 	"d": "jisoo",
 	"kunci": "a"
+},{
+	"type": "checkbox",
+	"soal": "pilihlah hero avenger",
+	"option": ["Hulk", "Iron Man", "Wiro Sableng"],
+	"kunci": ["Hul", "Iron Man"]
 }]`);

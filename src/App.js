@@ -14,18 +14,21 @@ class App extends Component {
   }
   
   addJawaban =(jawaban)=>{
-   console.log("jawabannya"+ jawaban)
-  let tempJawab = this.state.jawabanSoal;
-  tempJawab.push(jawaban);
+    let newJawaban = this.state.jawabanSoal.filter((value)=>{return value.soal_no !== jawaban.soal_no })
+     
+    newJawaban.push(jawaban);
+   
+     console.log("isi new jawaban" + JSON.stringify(newJawaban));
+     
   
-  this.setState({jawabanSoal: tempJawab});
+  this.setState({jawabanSoal:newJawaban});
   
   }
 
   render() {
     return (
     <div>
-     <p>Isi Jawaban = {this.state.jawabanSoal.map((jawab)=> JSON.stringify(jawab))}</p>
+     <p>Isi Jawaban = {JSON.stringify(this.state.jawabanSoal)}</p>
       <form>
         {  data.map((nilai, i) => {
           if (nilai.type === "essay") {

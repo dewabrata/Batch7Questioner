@@ -10,7 +10,7 @@ class CheckBox extends Component {
   
   eventHandler = (event) =>{
   
-    console.log(event.target.value);
+   
     if(event.target.checked){
     
        this.addDataJawaban(event.target.value);
@@ -42,13 +42,13 @@ class CheckBox extends Component {
   
    addScore = (jawab)=>{
    
-    let jawabanSoal = {
+    
+      
+      this.props.funcJawab({
         soal_no : this.props.no,
         jawaban :jawab
       
-      }
-      
-      this.props.funcJawab({jawabanSoal})
+      })
    
    }
   
