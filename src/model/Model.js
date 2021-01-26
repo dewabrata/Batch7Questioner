@@ -7,27 +7,32 @@ export const data = JSON.parse(`[{
 	"b": "hanif",
 	"c": "nobita",
 	"d": "naruto",
-	"kunci": "a"
+	"kunci": "a",
+	"score": 20
 }, {
 	"type": "checkbox",
 	"soal": "pilihlah 3 yang benar mengenai aqil",
 	"option": ["Trainer Juara Coding", "Manusia", "Anggota Avenger"],
-	"kunci": ["Manusia", "Anggota Avenger"]
+	"kunci": ["Manusia", "Anggota Avenger"],
+	"score": 20
 }, {
 	"type": "essay",
-	"soal": "Ceritakan pengalaman anda ketika sedang tidur",
-	"kunci": 20
+	"soal": "Buat gambar bintang lima dengan menggunakan coding javascript looping",
+	"kunci": "*****",
+	"score": 20
 },{
 	"type": "radio",
 	"soal": "Siapakah anggota BlackPink",
 	"a": "lisa",
-	"b": "rose",
-	"c": "jenny",
-	"d": "jisoo",
-	"kunci": "a"
+	"b": "rossi",
+	"c": "jenong",
+	"d": "isoo",
+	"kunci": "a",
+	"score": 20
 },{
 	"type": "checkbox",
 	"soal": "pilihlah hero avenger",
 	"option": ["Hulk", "Iron Man", "Wiro Sableng"],
-	"kunci": ["Hul", "Iron Man"]
+	"kunci": ["Hulk", "Iron Man"],
+	"score": 20
 }]`);
