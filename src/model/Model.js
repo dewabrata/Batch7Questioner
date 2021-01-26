@@ -35,4 +35,13 @@ export const data = JSON.parse(`[{
 	"option": ["Hulk", "Iron Man", "Wiro Sableng"],
 	"kunci": ["Hulk", "Iron Man"],
 	"score": 20
+},{
+	"type": "radio",
+	"soal": "Siapakah yang pernah dicupang aqil ",
+	"a": "chelsea islan",
+	"b": "lisa",
+	"c": "jenong",
+	"d": "isoo",
+	"kunci": "a",
+	"score": 20
 }]`);
