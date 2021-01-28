@@ -9,6 +9,7 @@ import {
   Link
 } from "react-router-dom";
 import AboutQuestion from './component/AboutQuestion';
+import CategoryQuiz from './component/CategoryQuiz';
 
 export default class App extends Component {
   render() {
@@ -19,10 +20,13 @@ export default class App extends Component {
          <Header/>
          <Switch>
          <Route path="/question">
-         <FormPertanyaan/>
+         <CategoryQuiz/>
           </Route>
           <Route path="/aboutus">
          <AboutQuestion/>
+          </Route>
+          <Route path="/attemptquiz/:type">
+         <FormPertanyaan/>
           </Route>
          </Switch>
          

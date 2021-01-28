@@ -5,13 +5,14 @@ import TextArea from './TextArea';
 import RadioButton from './RadioButton';
 import CheckBox from './CheckBox';
 import ResultNilai from './ResultNilai';
+import { withRouter } from "react-router-dom";
 
 class FormPertanyaan extends Component {
 
   constructor(props) {
     super(props);
     this.state = { jawabanSoal: [], score: 0, hasilJawabanSoal: [] , dataSoal :[] }
-
+    
 
 
 
@@ -19,12 +20,12 @@ class FormPertanyaan extends Component {
  
   componentDidMount(){
         
-    fetch('http://localhost:6969/quiz')
+    fetch('http://localhost:6969/quiz?type='+this.props.match.params.type)
     .then(response => response.json())
     .then(data =>{ 
     
     this.setState({dataSoal: data})
-    
+   
     
     });
      
@@ -149,4 +150,4 @@ class FormPertanyaan extends Component {
     )
   }
 }
-export default FormPertanyaan
+export default withRouter(FormPertanyaan)
