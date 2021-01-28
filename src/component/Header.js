@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import {
+  Link
+} from "react-router-dom";
 class Header extends Component {
     render() {
         return (
@@ -16,10 +18,10 @@ class Header extends Component {
                 <a className="nav-link" href="http://localhost:3000">Create Quiz</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Attempt Quiz</a>
+                <a className="nav-link"><Link to="/question">Attempt Quiz</Link></a>
               </li>
               <li className="nav-item">
-              <a className="nav-link" href="#">About Quiz</a>
+              <a className="nav-link"><Link to="/aboutus">About Quiz</Link></a>
               </li>
             </ul>
           </div>
