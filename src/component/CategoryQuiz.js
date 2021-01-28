@@ -4,10 +4,15 @@ class CategoryQuiz extends Component {
  constructor(props) {
  super(props);
  this.state = {dataCategory:[]}
+ 
+ 
  }
  
- componentDidMount(){
  
+ 
+   
+ componentDidMount(){
+    this.props.updateLinkStatus(["","","disabled",""]);
     fetch('http://localhost:6969/quiz')
     .then(response => response.json())
     .then(data =>{ 

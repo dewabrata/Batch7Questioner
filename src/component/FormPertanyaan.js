@@ -13,13 +13,13 @@ class FormPertanyaan extends Component {
     super(props);
     this.state = { jawabanSoal: [], score: 0, hasilJawabanSoal: [] , dataSoal :[] }
     
-
+   
 
 
   }
  
   componentDidMount(){
-        
+    this.props.updateLinkStatus(["","","disabled",""]);
     fetch('http://localhost:6969/quiz?type='+this.props.match.params.type)
     .then(response => response.json())
     .then(data =>{ 

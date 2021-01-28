@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import "../style/about.css"
 
 class AboutQuestion extends Component {
+constructor(props){
+super(props);
+
+
+}
+
+componentDidMount(){
+    this.props.updateLinkStatus(["","","","disabled"]);
+}
     render() {
         return (
             <div className="aboutus-section">
