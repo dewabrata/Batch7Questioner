@@ -5,9 +5,11 @@ import App from './App';
 import AboutQuestion from './component/AboutQuestion'
 import reportWebVitals from './reportWebVitals';
 
+import Home from './component/Home';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Home />
   </React.StrictMode>,
   document.getElementById('root')
 );

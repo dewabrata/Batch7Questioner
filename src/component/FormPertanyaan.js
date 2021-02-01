@@ -27,6 +27,7 @@ class FormPertanyaan extends Component {
     this.setState({dataSoal: data})
    
     
+    }).catch((err)=>{
     });
      
    
