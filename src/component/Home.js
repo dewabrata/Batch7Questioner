@@ -13,17 +13,21 @@ export default class Home extends Component {
         super(props)
 
 
-        this.state = { questionType: "" , dataQuestion:[]}
+        this.state = { questionType: "", dataQuestion: [], editQuestion:{} }
 
     }
     
-    onUpdateDataFromChild = (datas)=>{
-    
-      let dummyQuestion =  this.state.dataQuestion;
-      dummyQuestion.push(datas);
-      
-      this.setState({dataQuestion:dummyQuestion})
-    
+    componentDidMount(){
+        this.props.updateLinkStatus(["","disable","",""]);
+    }
+
+    onUpdateDataFromChild = (datas) => {
+
+        let dummyQuestion = this.state.dataQuestion;
+        dummyQuestion.push(datas);
+
+        this.setState({ dataQuestion: dummyQuestion })
+
     }
 
     onSelected = (event) => {
@@ -31,44 +35,61 @@ export default class Home extends Component {
         switch (event.target.value) {
 
             case "1":
-                this.setState({questionType:"radio"})
+                this.setState({ questionType: "radio" })
                 break;
 
             case "2":
-                this.setState({questionType:"checkbox"})
+                this.setState({ questionType: "checkbox" })
                 break;
 
             case "3":
-                this.setState({questionType:"textarea"})
+                this.setState({ questionType: "textarea" })
                 break
 
 
         }
 
     }
-    
-    questionForm= (typeQuestion) =>{
-    switch (typeQuestion){
-    
-    case "radio" :
-    return <FormRadio onUpdateDataFromChild = {this.onUpdateDataFromChild}/>
-    
-    case "checkbox" :
-    return <FormCheckbox/>
-    
-    case "textarea" :
-    return <FormTextArea/>
-    
-    }
-    
-    
+
+    questionForm = (typeQuestion) => {
+        switch (typeQuestion) {
+
+            case "radio":
+                return <FormRadio onUpdateDataFromChild={this.onUpdateDataFromChild} editValue = {this.state.editQuestion} />
+
+            case "checkbox":
+                return <FormCheckbox  onUpdateDataFromChild={this.onUpdateDataFromChild} editValue = {this.state.editQuestion}/>
+
+            case "textarea":
+                return <FormTextArea onUpdateDataFromChild={this.onUpdateDataFromChild} editValue = {this.state.editQuestion} />
+
+        }
+
+
     }
 
-    funcJawab = ()=>{
+    funcJawab = () => {
     
+
+    }
+    
+    deleteData =(event)=>{
+    console.log("delele data "+JSON.stringify(this.state.dataQuestion[event.target.value]))
+    let dummyQuestion = this.state.dataQuestion;
+    dummyQuestion.splice(event.target.value,1);
+
+    this.setState({ dataQuestion: dummyQuestion })
     
     }
     
+    updateData = (event)=>{
+        console.log("update  data " +this.state.dataQuestion[event.target.value])
+        
+        this.setState({editQuestion:this.state.dataQuestion[event.target.value]},()=>{
+           console.log(JSON.stringify( this.state.editQuestion))
+        })
+    }
+
     render() {
 
         return (
@@ -76,17 +97,18 @@ export default class Home extends Component {
 
                 <div className="row">
                     <div className="col-md-4 ">
-                    {this.state.dataQuestion.map((nilai, i) => {
-                  if (nilai.type === "textarea") {
-                    return <TextArea soal={nilai.soal} no={i + 1} key={i} funcJawab={this.funcJawab} />
-                  } else if (nilai.type === "radio") {
-                    return <RadioButton data={nilai} no={i + 1} key={i} funcJawab={this.funcJawab} />
-                  } else if (nilai.type === "checkbox") {
-                    return <CheckBox data={nilai} no={i + 1} key={i} funcJawab={this.funcJawab} />
-                  }
+                       
+                        {this.state.dataQuestion.map((nilai, i) => {
+                            if (nilai.type === "essay") {
+                                return <div className="card"><div className="card-header"><button value={i} onClick={this.deleteData}>Remove</button><button value={i}  onClick={this.updateData}>Edit</button></div><div className="card-body"><TextArea soal={nilai.soal} no={i + 1} key={i} funcJawab={this.funcJawab} /> </div></div>
+                            } else if (nilai.type === "radio") {
+                                return  <div className="card"><div className="card-header"><button value={i}  onClick={this.deleteData}>Remove</button><button value={i} onClick={this.updateData}>Edit</button></div><div className="card-body"><RadioButton data={nilai} no={i + 1} key={i} funcJawab={this.funcJawab} /> </div></div>
+                            } else if (nilai.type === "checkbox") {
+                                return <div className="card"><div className="card-header"><button value={i}  onClick={this.deleteData}>Remove</button><button value={i} onClick={this.updateData}>Edit</button></div><div className="card-body"><CheckBox data={nilai} no={i + 1} key={i} funcJawab={this.funcJawab} /></div></div>
+                            }
 
-                })
-                }
+                        })
+                        }
                     </div>
                     <div className="col-2"></div>
                     <div className="col-md-6 ">

@@ -44,6 +44,12 @@ export default class FormRadio extends Component {
 
     };
 
+    componentDidUpdate(){
+        console.log("Nilai editValue : " + JSON.stringify(this.props.editValue));
+        
+      
+    
+    }
 
 
     render() {

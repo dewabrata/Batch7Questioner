@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import AboutQuestion from './component/AboutQuestion';
 import CategoryQuiz from './component/CategoryQuiz';
+import Home from './component/Home';
 
 export default class App extends Component {
 
@@ -31,6 +32,9 @@ export default class App extends Component {
       
          <Header linkStatus= {this.state.linkStatus}/>
          <Switch>
+         <Route path="/createquiz">
+         <Home updateLinkStatus={this.updateLinkStatus}/>
+          </Route>
          <Route path="/question">
          <CategoryQuiz updateLinkStatus={this.updateLinkStatus}/>
           </Route>

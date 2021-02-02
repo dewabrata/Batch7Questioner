@@ -31,7 +31,7 @@ class RadioButton extends Component {
          <div>
          <label>{this.props.no}. {this.props.data.soal}</label><p></p>
             <div className="form-check">
-                <input onChange={this.eventHandler} className="form-check-input" type="radio" name={"soal"+this.props.no} id={"soal"+this.props.no} value="a"  />
+                <input onChange={this.eventHandler} className="form-check-input" type="radio" name={"soal"+this.props.no} id={"soal"+this.props.no} value="a"  ></input>
                     <label className="form-check-label" htmlFor={"soal"+this.props.no}>
                         {this.props.data.a}
                     </label>

@@ -25,7 +25,7 @@ class Header extends Component {
                 <a className={`nav-link ${this.props.linkStatus[0]}`} aria-current="page" href="#">Home</a>
               </li>
               <li className = {`nav-item`} >
-                <a className={`nav-link ${this.props.linkStatus[1]}`} href="http://localhost:3000">Create Quiz</a>
+                <Link className={`nav-link ${this.props.linkStatus[1]}`} to="/createquiz">Create Quiz</Link>
               </li>
               <li className = {`nav-item`} >
                <Link className={`nav-link ${this.props.linkStatus[2]}`} to="/question">Attempt Quiz</Link>
