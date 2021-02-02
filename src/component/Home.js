@@ -13,7 +13,7 @@ export default class Home extends Component {
         super(props)
 
 
-        this.state = { questionType: "", dataQuestion: [], editQuestion:{} }
+        this.state = { questionType: "", dataQuestion: [], editQuestion:{},indexKey:0 }
 
     }
     
@@ -22,12 +22,18 @@ export default class Home extends Component {
     }
 
     onUpdateDataFromChild = (datas) => {
-
         let dummyQuestion = this.state.dataQuestion;
+        if(datas.mode === "save"){
+        
         dummyQuestion.push(datas);
 
         this.setState({ dataQuestion: dummyQuestion })
-
+        }else{
+         dummyQuestion[this.state.indexKey] = datas
+         dummyQuestion[this.state.indexKey].mode="save"
+         console.log("revert status to save" +JSON.stringify(dummyQuestion[this.state.indexKey]))
+         this.setState({ dataQuestion: dummyQuestion })
+        }
     }
 
     onSelected = (event) => {
@@ -55,7 +61,7 @@ export default class Home extends Component {
         switch (typeQuestion) {
 
             case "radio":
-                return <FormRadio onUpdateDataFromChild={this.onUpdateDataFromChild} editValue = {this.state.editQuestion} />
+                return <FormRadio  onUpdateDataFromChild={this.onUpdateDataFromChild} editValue = {this.state.editQuestion} />
 
             case "checkbox":
                 return <FormCheckbox  onUpdateDataFromChild={this.onUpdateDataFromChild} editValue = {this.state.editQuestion}/>
@@ -83,11 +89,13 @@ export default class Home extends Component {
     }
     
     updateData = (event)=>{
-        console.log("update  data " +this.state.dataQuestion[event.target.value])
         
-        this.setState({editQuestion:this.state.dataQuestion[event.target.value]},()=>{
-           console.log(JSON.stringify( this.state.editQuestion))
-        })
+        let dummy = this.state.dataQuestion[event.target.value]
+        
+        dummy.mode = "edit"
+        this.setState({editQuestion:dummy,indexKey:event.target.value})
+       
+       
     }
 
     render() {

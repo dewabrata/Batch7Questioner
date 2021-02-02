@@ -13,7 +13,8 @@ export default class FormRadio extends Component {
           c:"",
           d:"",
           kunci :"",
-          score : 0
+          score : 0, 
+          mode :"save"
           
 
 
@@ -36,21 +37,24 @@ export default class FormRadio extends Component {
     
     }
 
-    createObjectData = () => {
+    createObjectData = () => {      
     
-       console.log(JSON.stringify(this.state))
-       this.props.onUpdateDataFromChild(this.state)
-
-
+           
+           this.props.onUpdateDataFromChild(this.state,this.props.indexkey)
+        
     };
 
-    componentDidUpdate(){
-        console.log("Nilai editValue : " + JSON.stringify(this.props.editValue));
+   
+      componentWillReceiveProps(propsData){
+    
+       
+        
+        this.setState(propsData.editValue)
+        
         
       
     
     }
-
 
     render() {
         return (
@@ -58,7 +62,7 @@ export default class FormRadio extends Component {
                 <div className="mb-3">
 
                     <label htmlFor="exampleFormControlInput1" className="form-label">Soal</label>
-                    <input type="text" className="form-control" name="soal" placeholder="Masukan Soal" onChange={this.eventHandler} />
+                    <input type="text" className="form-control" name="soal" placeholder="Masukan Soal" value={this.state.soal} onChange={this.eventHandler} />
                 </div>
                 <div className="mb-3">
 
@@ -91,7 +95,7 @@ export default class FormRadio extends Component {
                     <input type="text" className="form-control" name="score" placeholder="Masukan Score Nilai" onChange={this.eventHandler}/>
                 </div>
                 <div className="mb-3">
-                    <button className="primary" onClick={this.createObjectData } >Submit</button>
+                    <button className="primary" onClick={this.createObjectData } >{this.state.mode}</button>
                 </div>
             </div>
         )
